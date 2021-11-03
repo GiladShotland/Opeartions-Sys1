@@ -4,8 +4,11 @@
 #include<stdio.h>
 int main(){
     pid_t pid = fork();
-    if (pid != 0){
+    if (pid > 0){
         exit(EXIT_SUCCESS);
+    }
+    if(pid < 0){
+        exit(EXIT_FAILURE);
     }
     /*we're in the daemon
     changing directory, startig a new session, closing streams
